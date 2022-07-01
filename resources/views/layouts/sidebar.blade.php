@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item {{ setActive(['transaksi*']) }}">
-            <a class="nav-link" href="{{route('transaksi.index')}}">
+            <a class="nav-link" href="{{route('reservation.index')}}">
               <i class="menu-icon mdi mdi-backup-restore"></i>
               <span class="menu-title">Réservations</span>
             </a>

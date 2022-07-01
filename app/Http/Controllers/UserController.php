@@ -26,7 +26,7 @@ class UserController extends Controller
     public function index()
     {
         if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
             return redirect()->to('/');
         }
 
@@ -42,7 +42,7 @@ class UserController extends Controller
     public function create()
     {
         if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
             return redirect()->to('/');
         }
         return view('auth.register');
@@ -59,7 +59,7 @@ class UserController extends Controller
         $count = User::where('username',$request->input('username'))->count();
 
         if($count>0){
-            Session::flash('message', 'Already exist!');
+            Session::flash('message', 'Existe déjà!');
             Session::flash('message_type', 'danger');
             return redirect()->to('user');
         }
@@ -92,7 +92,7 @@ class UserController extends Controller
             'gambar' => $gambar
         ]);
 
-        Session::flash('message', 'Berhasil ditambahkan!');
+        Session::flash('message', 'Ajouté avec succès!');
         Session::flash('message_type', 'success');
         return redirect()->route('user.index');
 
@@ -107,7 +107,7 @@ class UserController extends Controller
     public function show($id)
     {
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -125,7 +125,7 @@ class UserController extends Controller
     public function edit($id)
     {   
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -168,7 +168,7 @@ class UserController extends Controller
 
         $user_data->update();
 
-        Session::flash('message', 'Berhasil diubah!');
+        Session::flash('message', 'Modifié avec succès!');
         Session::flash('message_type', 'success');
         return redirect()->to('user');
     }
@@ -184,10 +184,10 @@ class UserController extends Controller
         if(Auth::user()->id != $id) {
             $user_data = User::findOrFail($id);
             $user_data->delete();
-            Session::flash('message', 'Berhasil dihapus!');
+            Session::flash('message', 'Supprimé avec succès!');
             Session::flash('message_type', 'success');
         } else {
-            Session::flash('message', 'Akun anda sendiri tidak bisa dihapus!');
+            Session::flash('message', 'Le compte personnel ne peut pas être supprimé!');
             Session::flash('message_type', 'danger');
         }
         return redirect()->to('user');

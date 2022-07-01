@@ -105,7 +105,7 @@ class TransaksiController extends Controller
                             'jumlah_buku' => ($transaksi->buku->jumlah_buku - 1),
                             ]);
 
-        alert()->success('Berhasil.','Data telah ditambahkan!');
+        alert()->success('Accepté','Les données ont été ajoutées!');
         return redirect()->route('transaksi.index');
 
     }
@@ -123,7 +123,7 @@ class TransaksiController extends Controller
 
 
         if((Auth::user()->level == 'user') && (Auth::user()->anggota->id != $data->anggota_id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -142,7 +142,7 @@ class TransaksiController extends Controller
         $data = Transaksi::findOrFail($id);
 
         if((Auth::user()->level == 'user') && (Auth::user()->anggota->id != $data->anggota_id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -169,7 +169,7 @@ class TransaksiController extends Controller
                             'jumlah_buku' => ($transaksi->buku->jumlah_buku + 1),
                             ]);
 
-        alert()->success('Berhasil.','Data telah diubah!');
+        alert()->success('Accepté','Les données ont été modifiées!');
         return redirect()->route('transaksi.index');
     }
 
@@ -182,7 +182,7 @@ class TransaksiController extends Controller
     public function destroy($id)
     {
         Transaksi::find($id)->delete();
-        alert()->success('Berhasil.','Data telah dihapus!');
+        alert()->success('Accepté','Les données ont été supprimées!');
         return redirect()->route('transaksi.index');
     }
 }

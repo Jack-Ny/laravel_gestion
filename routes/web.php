@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('home');
 });
 */
+
+use App\Http\Controllers\ReservationController;
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -41,5 +44,7 @@ Route::get('/laporan/trs/excel', 'LaporanController@transaksiExcel');
 Route::get('/laporan/buku', 'LaporanController@buku');
 Route::get('/laporan/buku/pdf', 'LaporanController@bukuPdf');
 Route::get('/laporan/buku/excel', 'LaporanController@bukuExcel');
+
+Route::resource('reservation', 'ReservationController');
 
 

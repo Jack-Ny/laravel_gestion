@@ -29,7 +29,7 @@ class BukuController extends Controller
     public function index()
     {
         if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
             return redirect()->to('/');
         }
 
@@ -45,7 +45,7 @@ class BukuController extends Controller
     public function create()
     {
         if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
             return redirect()->to('/');
         }
 
@@ -98,7 +98,7 @@ class BukuController extends Controller
                   
             };
         }
-        alert()->success('Berhasil.','Data telah diimport!');
+        alert()->success('Accepté','Les données ont été importées!');
         return back();
     }
 
@@ -138,7 +138,7 @@ class BukuController extends Controller
                 'cover' => $cover
             ]);
 
-        alert()->success('Berhasil.','Data telah ditambahkan!');
+        alert()->success('Accepté','Les données ont été ajoutées!');
 
         return redirect()->route('buku.index');
 
@@ -153,7 +153,7 @@ class BukuController extends Controller
     public function show($id)
     {
         if(Auth::user()->level == 'user') {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -171,7 +171,7 @@ class BukuController extends Controller
     public function edit($id)
     {   
         if(Auth::user()->level == 'user') {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -211,7 +211,7 @@ class BukuController extends Controller
                 'cover' => $cover
                 ]);
 
-        alert()->success('Berhasil.','Data telah diubah!');
+        alert()->success('Accepté','Les données ont été modifiées!');
         return redirect()->route('buku.index');
     }
 
@@ -224,7 +224,7 @@ class BukuController extends Controller
     public function destroy($id)
     {
         Buku::find($id)->delete();
-        alert()->success('Berhasil.','Data telah dihapus!');
+        alert()->success('Accepté','Les données ont été supprimées!');
         return redirect()->route('buku.index');
     }
 }

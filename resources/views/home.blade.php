@@ -27,7 +27,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total de toutes les transactions
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total de tout les emprunts
                   </p>
                 </div>
               </div>
@@ -40,7 +40,7 @@
                       <i class="mdi mdi-receipt text-warning icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">En prêt</p>
+                      <p class="mb-0 text-right">Emprunt en cours</p>
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-right mb-0">{{$transaksi->where('status', 'pinjam')->count()}}</h3>
                       </div>
@@ -92,13 +92,55 @@
                 </div>
               </div>
             </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-location text-info icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Réservations</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">{{$reservation->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Toutes les réservations
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-location text-info icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Réservations</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">{{$reservation->where('status', 'pinjam')->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Toutes les réservations en cours
+                  </p>
+                </div>
+              </div>
+            </div>
 </div>
 <div class="row" >
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
 
                 <div class="card-body">
-                  <h4 class="card-title">Données de transaction empruntées</h4>
+                  <h4 class="card-title">Information sur tout les emprunts</h4>
                   
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">

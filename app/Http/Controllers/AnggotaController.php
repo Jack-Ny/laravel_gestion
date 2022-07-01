@@ -28,7 +28,7 @@ class AnggotaController extends Controller
     public function index()
     {
         if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
             return redirect()->to('/');
         }
 
@@ -44,7 +44,7 @@ class AnggotaController extends Controller
     public function create()
     {
         if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
             return redirect()->to('/');
         }
 
@@ -67,7 +67,7 @@ class AnggotaController extends Controller
         $count = Anggota::where('npm',$request->input('npm'))->count();
 
         if($count>0){
-            Session::flash('message', 'Already exist!');
+            Session::flash('message', 'Existe deja!');
             Session::flash('message_type', 'danger');
             return redirect()->to('anggota');
         }
@@ -79,7 +79,7 @@ class AnggotaController extends Controller
 
         Anggota::create($request->all());
 
-        alert()->success('Berhasil.','Data telah ditambahkan!');
+        alert()->success('Accepté.','Les données ont été ajoutées!');
         return redirect()->route('anggota.index');
 
     }
@@ -93,7 +93,7 @@ class AnggotaController extends Controller
     public function show($id)
     {
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -111,7 +111,7 @@ class AnggotaController extends Controller
     public function edit($id)
     {   
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                Alert::info('Oups..', 'vous ne pouvez pas entrez dans cette zone.');
                 return redirect()->to('/');
         }
 
@@ -131,7 +131,7 @@ class AnggotaController extends Controller
     {
         Anggota::find($id)->update($request->all());
 
-        alert()->success('Berhasil.','Data telah diubah!');
+        alert()->success('Accepté.','Les données ont été modifiées!');
         return redirect()->to('anggota');
     }
 
@@ -144,7 +144,7 @@ class AnggotaController extends Controller
     public function destroy($id)
     {
         Anggota::find($id)->delete();
-        alert()->success('Berhasil.','Data telah dihapus!');
+        alert()->success('Accepté.','Les données ont été supprimées!');
         return redirect()->route('anggota.index');
     }
 }
